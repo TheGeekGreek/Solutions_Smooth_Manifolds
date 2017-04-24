@@ -1,0 +1,71 @@
+\chapter{Tangent Vectors}
+\section{Tangent Vectors}
+\subsection{Tangent Vectors on Manifolds}
+
+\begin{exercise}
+	Let $M$ be a smooth manifold and $p \in M$. The set of all derivations at $p$, written $T_pM$, is a real vector space under the usual pointwise defined operations.
+\end{exercise}
+
+\begin{solution}
+	Clearly $T_pM \subseteq \Lrm(\Cscr^\infty(M);\Rbb)$ and thus it is enough to show that $T_pM$ is a linear subspace of $\Lrm(\Cscr^\infty(M);\Rbb)$ (see \cite[626]{lee:smooth_manifolds:2013}). We have $T_pM \neq \varnothing$, since $0 \in T_pM$ defined by $f \mapsto 0$. Let $u,v \in T_pM$, $\lambda \in \Rbb$ and $f,g \in \Cscr^\infty(M)$. Then by
+	\begin{align*}
+		(\lambda u + v)(fg) &= \lambda u(fg) + v(fg)\\
+		&= f(p)\del[1]{\lambda u(g) + v(g)} + g(p)\del[1]{\lambda u(f) + v(f)}\\
+		&= f(p)(\lambda u + v)(g) + g(p)(\lambda u + v)(f) 
+	\end{align*}
+	\noindent we have that $\lambda u + v \in T_pM$.
+\end{solution}
+
+\begin{exercise}
+	Suppose $M$ is a smooth manifold. Let $p \in M$, $v \in T_pM$ and $f \in \Cscr^\infty(M)$. If $f$ is constant, then $v(f) = 0$.
+\end{exercise}
+
+\begin{solution}
+	First assume that $f = \chi_M$. Then 
+	\begin{equation}
+		v(\chi_M) = v(\chi_M\cdot \chi_M) = f(p)v(\chi_M) + f(p)v(\chi_M) = v(\chi_M) + v(\chi_M)
+	\end{equation}
+	\noindent implies that $v(f) = 0$. Hence if $f = \lambda\chi_M$ for $\lambda \in \Rbb$, the $\mathbb{R}$-linearity of $v$ implies that
+	\begin{equation}
+		v(f) = v(\lambda\chi_M) = \lambda v(\chi_M) = 0.	
+	\end{equation}
+\end{solution}
+
+\begin{exercise}[Properties of Differentials]
+	Let $M$, $N$ and $P$ be smooth manifolds, let $F: M \to N$ and $G: N \to P$ be smooth maps, and let $p \in M$.
+	\begin{enumerate}[label = (\alph*)]
+		\item $\d F_p: T_pM \to T_{F(p)}N$ is $\mathbb{R}$-linear.
+		\item $\d (G \circ F)_p = \d G_{F(p)} \circ \d F_p$.
+		\item $\d(id_M)_p = id_{T_pM}$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+	Let $u,v \in T_pM$, $\lambda \in \mathbb{R}$ and $f \in \Cscr^\infty(N)$. Then
+	\begin{align*}
+		\d F_p(\lambda u + v)(f) &= (\lambda u + v)(f \circ F)\\
+		&= \lambda u(f \circ F) + v(f \circ F)\\
+		&= \lambda\d F_p(u)(f) + \d F_p(v)(f).
+	\end{align*}
+	This shows part (a). Let $v \in T_pM$ and $f \in \Cscr^\infty(P)$. Then
+	\begin{align*}
+		\d (G \circ F)_p(v)(f) &= v\del[1]{f \circ (G \circ F)}\\
+		&= v\del[1]{(f \circ G) \circ F}\\
+		&= \d F_p (f \circ G)\\
+		&= \d G_{F(p)}\del[1]{\d F_p(v)}(f)\\
+		&= \del[1]{\d G_{F(p)} \circ \d F_p}(v)(f).
+	\end{align*}
+	This shows part (b). Part (c) is immediate by
+	\begin{equation*}
+		\d (id_M)_p(v)(f) = v(f \circ id_M) = v(f)
+	\end{equation*}
+	\noindent for $f \in \Cscr^\infty(M)$. Finally, part (b) and (c) yields
+	\begin{equation*}
+		\d F_p \circ \d \del[1]{F^{-1}}_{F(p)} = \d(F \circ F^{-1})_{F(p)} = \d(id_N)_{F(p)} = id_{T_{F(p)}N}
+	\end{equation*}
+	\noindent and
+	\begin{equation*}
+		\d \del[1]{F^{-1}}_{F(p)} \circ \d F_p = \d(F^{-1} \circ F)_p = \d (id_M)_p = id_{T_pM}
+	\end{equation*}
+	\noindent which shows that $\d F_p$ is bijective with inverse $\del[0]{\d F_p}^{-1} = \d \del[1]{F^{-1}}_{F(p)}$ by uniqueness. Since by part (a) $\d F_p$ is linear, we have that $dF_p$ is an isomorphism (see \cite[622]{lee:smooth_manifolds:2013}). This shows part (d).
+\end{solution}

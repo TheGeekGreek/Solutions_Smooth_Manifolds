@@ -1,0 +1,23 @@
+\chapter{Tensors}
+\section{Pullbacks of Tensor Fields}
+
+\begin{exercise}[Properties of Tensor Pullbacks]
+	Suppose $F: M \to N$ is a smooth mapping and $A$, $B$ are covariant tensor fields on $N$. Then
+	\begin{enumerate}[label = (\alph*)]
+		\item $F^*(A \otimes B) = F^*A \otimes F^* B$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+	Let $p \in M$. Then we have
+	\begin{align*}
+		\del[1]{F^*(A\otimes B)}_p (v_1,\dots,v_{k + l})&= (A \otimes B)_{F(p)}\del[1]{\d F_p(v_1), \dots, \d F_p(v_{k + l})}\\
+		&= \del[1]{A_{F(p)} \otimes B_{F(p)}} \del[1]{\d F_p(v_1), \dots, \d F_p(v_{k + l})}\\
+		&= A_{F(p)}\del[1]{\d F_p(v_1), \dots, \d F_p(v_{k})}B_{F(p)}\del[1]{\d F_p(v_{k+1}), \dots, \d F_p(v_{k + l})}\\
+		&= (F^* A)_p(v_1,\dots,v_k) (F^* B)_p(v_{k+1},\dots,v_{k + l})\\
+		&= \del[1]{(F^* A)_p \otimes (F^* B)_p}(v_1,\dots,v_{k + l})\\
+		&= (F^* A \otimes F^* B)_p(v_1,\dots,v_{k + l})
+	\end{align*}
+	\noindent for all $v_1,\dots,v_{k + l} \in T_pM$.
+
+\end{solution}
