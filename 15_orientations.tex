@@ -1,0 +1,42 @@
+\chapter{Orientations}
+\section{Orientations of Vector Spaces}
+\begin{exercise}
+	Let $V$ be a vector space of dimension $n \geq 1$. Define a relation $\sim$ on the set of all ordered bases of $V$ by 
+	\begin{equation}
+		(v_1,\dots,v_n) \sim (w_1,\dots,w_n) \quad :\Leftrightarrow \quad \det B > 0
+	\end{equation}
+	\noindent where $B$ denotes the transition matrix defined by $w_j = B^i_j v_i$. Show that $\sim$ is an equivalence relation and that $\abs[0]{X/{\sim}} = 2$.
+\end{exercise}
+
+\begin{solution}
+	Clearly $(v_1,\dots,v_n) \sim (v_1,\dots,v_n)$ by $v_j = \delta^i_j v_i$. Assume $(v_1,\dots,v_n) \sim (w_1,\dots,w_n)$. Thus $B$ defined by $w_j = B^i_j v_i$ has a positive  determinant. But then by $\det(B^{-1}) = \del[1]{\det(B)}^{-1}$ also $\det(B^{-1})$ is positive and $v_j = \del[1]{B^{-1}}^i_j w_i$. Hence $(w_1,\dots,w_n) \sim (v_1,\dots,v_n)$. Lastly, assume that also $(w_1,\dots,w_n) \sim (u_1,\dots,u_n)$. Hence there exists a matrix $A$ such that $u_j = A^i_j w_i$ where $\det(A) > 0$. Thus $u_j = A^i_jw_i = A^i_j(B^k_i v_k)=(A^i_jB^k_i)v_k$ and by $\det(AB) = \det(A)\det(B)>0$ we get that $(v_1,\dots,v_n) \sim (u_1,\dots,u_n)$. Hence $\sim$ is an equivalence relation.\\ 
+	By \cite[335]{grillet:abstract_algebra:2007} every vector space has a basis. Let us denote it by $(v_1,\dots,v_n)$. Therefore
+	\begin{equation*}
+		(\widetilde{v}_1,\dots,\widetilde{v}_n) := (-v_1,\dots,v_n)
+	\end{equation*}
+	\noindent is also a basis for $V$ simply by considering the transition matrix
+	\begin{equation*}
+		\widetilde{B} := \begin{pmatrix}
+		-1\\
+		&1\\
+		&&\ddots\\
+		&&&1
+		\end{pmatrix}
+	\end{equation*}
+	\noindent defined by $v_j = \widetilde{B}^i_j \widetilde{v}_i$. Let $(w_1,\dots,w_n)$ be an ordered basis for $V$. Let the transition matrix $B$ be defined by $w_j = B^ i_j v_i$. If $\det(B) > 0$, we have that 
+	\begin{equation*}
+		(w_1,\dots,w_n) \sim (v_1,\dots,v_n).
+	\end{equation*}
+	Otherwise, if $\det(B) < 0$
+	\begin{equation*}
+		w_j = B^i_j v_i = B^i_j\del[1]{\widehat{B}_i^ k \widehat{v}_k} = \del[1]{B^i_j\widehat{B}_i^ k}\widehat{v}_k
+	\end{equation*}
+	\noindent together with $\det(B\widehat{B}) = \det(B)\det(\widehat{B}) > 0$ yields
+	\begin{equation*}
+		(w_1,\dots,w_n) \sim (\widetilde{v}_1,\dots,\widetilde{v}_n).
+	\end{equation*}
+	\noindent Since $\det(B) \neq 0$ by the nonsingularity of $B$, we have that there are exactly two equivalence classes
+	\begin{equation*}
+		\sbr[0]{(v_1,\dots,v_n)}_{\sim} \qquad \text{and} \qquad \sbr[0]{(-v_1,\dots,v_n)}_{\sim}.
+	\end{equation*}
+\end{solution}
