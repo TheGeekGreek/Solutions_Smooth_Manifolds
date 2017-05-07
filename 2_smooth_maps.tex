@@ -1,0 +1,45 @@
+\chapter{Smooth Maps}
+\section{Smooth Functions and Smooth Maps}
+\subsection{Smooth Functions on Manifolds}
+
+We follow the terminology established in \cite[515]{grillet:abstract_algebra:2007}.
+
+\begin{exercise}
+	Let $M$ be a smooth manifold. $\Cscr^\infty(M)$ is an associative and commutative $\Rbb$-algebra with identity under the usual pointwise defined operations.
+\end{exercise}
+
+\begin{solution}
+	First we show that $\Cscr^\infty(M)$ is a real vector space. Since $\Cscr^\infty(M) \subseteq \Rbb^M$ it is enough to show that $\Cscr^\infty(M)$ is a linear subspace of the real vector space $\Rbb^M$. Clearly, $\Cscr^\infty(M) \neq \varnothing$, since $\chi_M \in \Cscr^\infty(M)$. Indeed, for $p \in M$ we find a chart $(U,\varphi)$ such that $p \in U$ and the composition $\chi_M \circ \varphi^{-1}: \varphi(U) \to \mathbb{R}$ is clearly the function $\chi_{\varphi(U)}$, which is smooth since it is constant. Now let $f,g \in \Cscr^\infty(M)$, $\lambda \in \mathbb{R}$ and $p \in M$. By definition, there exist charts $(U,\varphi)$, $(V,\psi)$ such that $f \circ \varphi^{-1}$ and $g \circ \psi^{-1}$ are smooth. Now consider the chart $(U \cap V,\varphi)$. Then by
+	\begin{equation*}
+		(\lambda f + g) \circ \varphi^{-1} = \lambda (f \circ \varphi^{-1}) + (g \circ \varphi^{-1}) = \lambda (f \circ \varphi^{-1}) + \del[1]{(g \circ \psi^{-1}) \circ (\psi \circ \varphi^{-1})}
+	\end{equation*}
+	\noindent we have that $\lambda f + g \in \Cscr^\infty(M)$. Hence $\Cscr^\infty(M)$ is a real vector space.\\
+	Now define a product map $\cdot:\Cscr^\infty(M) \times \Cscr^\infty(M) \to \Cscr^\infty(M)$ by pointwise multiplication. Indeed, similar to the previous reasoning, by
+	\begin{equation*}
+		(f \cdot g) \circ \varphi^{-1} = (f \circ \varphi^{-1}) \cdot (g \circ \varphi^{-1}) = (f \circ \varphi^{-1}) \cdot \del[1]{(g \circ \psi^{-1}) \circ (\psi \circ \varphi^{-1})}
+	\end{equation*}
+	\noindent we have that $f \cdot g$ is smooth. Let $f,g,h \in \Cscr^\infty(M)$ and $\lambda \in \mathbb{R}$. Then for $p \in M$
+	\begin{align*}
+		\del[1]{(\lambda f + g) \cdot h}(p) &= (\lambda f + g)(p) h(p)\\
+		&= \del[1]{\lambda f(p) + g(p)} h(p)\\
+		&= \lambda f(p) h(p) + g(p) h(p)\\
+		&= \lambda (f\cdot h)(p) + (g \cdot h)(p)\\
+		&= \del[1]{\lambda(f \cdot h)}(p) + (g \cdot h)(p)\\
+		&= \del[1]{\lambda (f \cdot h) + (g \cdot h)}(p)
+	\end{align*}
+	\noindent shows that $\cdot$ is bilinear in the first argument. A similar computation shows that $\cdot$ is bilinear. By
+	\begin{align*}
+		\del[1]{(f \cdot g) \cdot}(p) &= (f \cdot g)(p)h(p)\\
+		&= f(p)g(p)h(p)\\
+		&= f(p)(g \cdot h)(p)\\
+		&= \del[1]{f \cdot (g \cdot h)}(p)
+	\end{align*}
+	\noindent we see that $\cdot$ is associative. Furthermore by
+	\begin{equation*}
+		(f \cdot g)(p) = f(p) g(p) = g(p) f(p) = (g \cdot f)(p)
+	\end{equation*}
+	\noindent we see that $\cdot$ is commutative. Finally, the identity element is given by $\chi_M$ since 
+	\begin{equation*}
+		(\chi_M \cdot f)(p) = \chi_M(p)f(p) = 1f(p) = f(p).
+	\end{equation*}
+\end{solution}

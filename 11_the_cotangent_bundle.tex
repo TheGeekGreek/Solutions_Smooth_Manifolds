@@ -1,0 +1,42 @@
+\chapter{The Cotangent Bundle}
+\section{Line Integrals}
+\subsection{The Winding Number*}
+\begin{definition}[Winding Number]
+Let $z_0 \in \mathbb{C}$ and $\gamma: \intcc{a,b} \to \mathbb{C} \setminus \cbr[0]{z_0}$ be a piecewise continuously differentiable closed path. Then
+\begin{equation}
+\W(\gamma,z_0) := \frac{1}{2\pi i} \int_\gamma \frac{\d z}{z - z_0}
+\end{equation}
+\noindent is called the \bld{winding number} of $\gamma$ around $z_0$.
+\label{def:winding_number}
+\end{definition}
+
+\begin{proposition}
+Let $z_0 := x_0 + iy_0 \in \mathbb{C}$ and $\gamma: \intcc{a,b} \to \mathbb{C} \setminus \cbr[0]{z_0}$ be a piecewise continuously differentiable closed path. Then 
+\begin{equation}
+\W(\gamma,z_0) = \int_\gamma \omega
+\end{equation}
+\noindent where $\omega \in \Omega^1\del[1]{\mathbb{R}^2 \setminus \cbr[0]{z_0}}$ is given by
+\begin{equation}
+\omega := \frac{1}{2\pi}\frac{(x - x_0)\d y - (y - y_0) \d x}{(x - x_0)^2 + (y - y_0)^2}.
+\end{equation}
+\label{prop:winding_number_equivalence}
+\end{proposition}
+
+\begin{proof}
+This immediately follows from 
+\begin{align*}
+\int_\gamma \frac{\d z}{z - z_0} &= \int_\gamma \frac{\d x + i \d y}{(x + iy) - (x_0 + iy_0)}\\
+&= \int_\gamma \frac{\d x + i \d y}{(x - x_0) + i(y - y_0)}\frac{(x - x_0) - i(y - y_0)}{(x - x_0) - i(y - y_0)}\\
+&= \int_\gamma \frac{(x - x_0)\d x + \del[1]{(x - x_0)\d y - (y - y_0)\d x} + (y - y_0)\d y}{(x - x_0)^2 + (y - y_0)^2}\\
+&= \int_\gamma \frac{(x - x_0)\d x + (y - y_0)\d y}{(x - x_0)^2 + (y - y_0)^2} + i\int_\gamma \frac{(x - x_0)\d y - (y - y_0)\d x}{(x - x_0)^2 + (y - y_0)^2}\\
+&= i\int_\gamma \frac{(x - x_0)\d y - (y - y_0)\d x}{(x - x_0)^2 + (y - y_0)^2}
+\end{align*}
+\noindent by the fundamental theorem for line integrals \cite[291]{lee:smooth_manifolds:2013} since 
+\begin{equation*}
+\d \del[3]{\frac{1}{2} \log\del[1]{(x - x_0)^2 + (y - y_0)^2}} = \frac{(x - x_0)\d x + (y - y_0)\d y}{(x - x_0)^2 + (y - y_0)^2}.
+\end{equation*}
+\end{proof}
+
+\begin{remark}
+By proposition \ref{prop:winding_number_equivalence}, the definition of the winding number in complex analysis given by definition \ref{def:winding_number} coincides with the one usually given in algebraic topology (see for example \cite[19--20]{fulton:algebraic_topology:1995}).
+\end{remark}
