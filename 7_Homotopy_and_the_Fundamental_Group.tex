@@ -1,0 +1,16 @@
+\chapter{Homotopy and the Fundamental Group}
+\section{The Fundamental Group}
+\begin{exercise}
+Let $X$ be a topological space. For any points $p,q \in X$, path homotopy is an equivalence relation on the set of all paths in $X$ from $p$ to $q$.
+\end{exercise}
+
+\begin{solution}
+Let $f$ be a path in $X$ from $p$ to $q$. Define $H: I \times I \to X$ by $H(s,t) := f(s)$. Clearly $H$ is continuous since $f$ is. Indeed, take $U \subseteq X$ open, then $H^{-1}(U) = f^{-1}(U) \times I$ which is open in the box topology. Now clearly $H(s,0) = H(s,1) = f(s)$ for all $s \in I$ and $H(0,t) = f(0) = p$, $H(1,t) = f(1) = q$ for all $t \in I$. Hence $f \sim f$. If $f \sim g$ and $F$ is a path homotopy from $f$ to $g$, then $H: I \times I \to X$ defined by $H(s,t) := F(1-s,1-t)$ is a path homotopy from $g$ to $f$. Thus $g \sim f$. If $f \sim g$ and $g \sim h$ where $F$ and $G$ denote the path homotopies, respectively, then $H: I \times I \to X$ defined by
+\begin{align*}
+H(s,t) := \begin{cases}
+F(s,2t) & 0 \leq t \leq \frac{1}{2},\\
+G(s,2t - 1) & \frac{1}{2} \leq t \leq 1
+\end{cases}
+\end{align*}
+\noindent is a path homotopy from $f$ to $h$, hence $f \sim g$.
+\end{solution}
