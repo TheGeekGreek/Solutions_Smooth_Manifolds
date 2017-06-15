@@ -1,0 +1,148 @@
+\chapter{Integral Curves and Flows}
+\section{Integral Curves}
+\begin{definition}
+Let $(M_1,d_1)$ and $(M_2,d_2)$ be metric spaces. A mapping $f: M_1 \to M_2$ is said to be \bld{Lipschitz continuous} if there exists $L \in \mathbb{R}_{>0}$ such that for all $x,y \in M_1$
+\begin{equation}
+d_2\del[1]{f(x),f(y)} \leq L d_1(x,y)
+\end{equation}
+\noindent holds. We say that $f$ is \bld{locally Lipschitz continuous} if for every point $x \in M_1$ there exists a neighbourhood on which $f$ is Lipschitz continuous.
+\end{definition}
+
+\begin{proposition}
+Let $(M_1,d_1)$ be a metric space and $(M_2,d_2)$ a complete bounded metric space. For $f,g \in \Cscr(M_1;M_2)$ define
+\begin{equation}
+d_\infty(f,g) := \sup_{x \in M_1} d_2\del[1]{f(x),g(x)}.
+\end{equation}
+Then $(\Cscr(M_1;M_2),d_\infty)$ is a complete metric space.
+\label{prop:complete}
+\end{proposition}
+
+\begin{proof}
+Since $M$ is bounded, there exists $C \in \mathbb{R}_{>0}$ such that $d_2(x,y) \leq R$ for all $x,y \in M_1$. Hence 
+\begin{equation*}
+d_\infty(f,g) = \sup_{x \in M_1} d_2\del[1]{f(x),g(x)} \leq R < \infty
+\end{equation*}
+\noindent for all $f,g \in \Cscr(M_1;M_2)$. The metric axioms are easily verified, so we only show the completeness property. Let $(f_\nu)_{\nu \in \mathbb{N}}$ be a Cauchy sequence in $\Cscr(M_1;M_2)$. Fix $\varepsilon > 0$. Since $(f_\nu)_{\nu \in \mathbb{N}}$ is a Cauchy sequence, we find $N \in \mathbb{N}$, such that for all $\nu,\mu \geq N$
+\begin{equation*}
+d_\infty\del[1]{f_\nu,f_\mu} < \frac{\varepsilon}{2} 
+\end{equation*}
+\noindent holds. So for all $y \in M_1$ we have 
+\begin{equation*}
+d_2\del[1]{f_\nu(y),f_\mu(y)} \leq \sup_{x \in X}d_2\del[1]{f_\nu(x),f_\mu(x)} = d_\infty(f_\nu,f_\mu) < \varepsilon.
+\end{equation*}
+\noindent whenever $\nu,\mu \geq N$. Thus $\del[1]{f_\nu(y)}_{\nu \in \mathbb{N}}$ is a Cauchy sequence in $M_2$ for all $y \in M_1$. Since $M_2$ is complete 
+\begin{equation*}
+f(y) := \lim_{\nu \to \infty} f_\nu(y)
+\end{equation*}
+\noindent exists for all $y \in M_1$. Now we show that $f_\nu \to f$ with respect to $d_\infty$. For all $\nu \geq N$ and $y \in M_1$ we have that 
+\begin{align*}
+d_2\del[1]{f_\nu(y),f(y)} &= \lim_{\mu \to \infty}d_2\del[1]{f_\nu(y),f_\mu(y)}\\
+&= \liminf_{\mu \to \infty}d_2\del[1]{f_\nu(y),f_\mu(y)}\\
+&\leq \liminf_{\mu \to \infty}d_\infty(f_\nu,f_\mu)\\
+&\leq \frac{\varepsilon}{2}\\
+&< \varepsilon.
+\end{align*}
+Hence 
+\begin{equation*}
+d_\infty(f_\nu,f) < \varepsilon
+\end{equation*}
+\noindent whenever $\nu \geq N$. So $f_\nu \to f$ with respect to $d_\infty$. Left to show is that $f \in \Cscr(M_1;M_2)$. Fix $x_0 \in M_1$. Since $f_\nu \to f$ with respect to $d_\infty$, there exists $N \in \mathbb{N}$ such that 
+\begin{equation*}
+d_\infty(f_\nu,f) < \frac{\varepsilon}{3}
+\end{equation*}
+\noindent for all $\nu \geq N$. Fix $\nu_0 \geq N$. Since $f_{\nu_0}$ is continuous at $x_0$, there exists $\delta > 0$, such that
+\begin{equation*}
+d_2\del[1]{f_{\nu_0}(x_0),f_{\nu_0}(x)} < \frac{\varepsilon}{3}
+\end{equation*}
+\noindent whenever $d_1(x_0,x) < \delta$. Hence
+\begin{align*}
+d_2\del[1]{f(x_0),f(x)} &= d_2\del[1]{f(x_0),f_{\nu_0}(x)} + d_2\del[1]{f_{\nu_0}(x_0),f_{\nu_0}(x)} + d_2\del[1]{f_{\nu_0}(x),f(x)}\\
+&< 2 d_\infty(f,f_{\nu_0}) + \frac{\varepsilon}{3}\\
+&< \varepsilon
+\end{align*}
+\noindent whenever $d_1(x_0,x) < \delta$. Thus $f \in \Cscr(M_1;M_2)$. 
+\end{proof}
+
+\begin{lemma}[Integral Formulation of an ODE]
+Let $n \in \mathbb{Z}$, $n > 0$, $U \subseteq \mathbb{R}^n$ and $f \in \Cscr(U;\mathbb{R}^n)$. A mapping $y \in \Cscr(J_0;U)$, for some interval $J_0$ containing $t_0$, is a solution of the initial value problem
+\begin{equation}
+\begin{cases}
+y'(t) = f\del[1]{y(t)}\\
+y(t_0) = y_0
+\end{cases}
+\label{eq:autonomous_ivp}
+\end{equation}
+\noindent if and only if
+\begin{equation}
+y(t) = y_0 + \int_{t_0}^t f\del[1]{y(s)}\d s
+\end{equation}
+\noindent holds for all $t \in J_0$.
+\label{lem:reformulation}
+\end{lemma}
+
+\begin{proof}
+Assume that $y \in \Cscr^1(J_0;U)$ solves (\ref{eq:autonomous_ivp}). Then  
+\begin{equation*}
+\int_{t_0}^t f\del[1]{y(s)} \d s = \int_{t_0}^t y'(s)\d s = y(t) - y(t_0)
+\end{equation*}
+\noindent for all $t \in J_0$ by the corollary to the first fundamental theorem of calculus \cite[284]{spivak:calculus:1994}.\\
+Conversly assume that 
+\begin{equation*}
+y(t) = y_0 + \int_{t_0}^t f\del[1]{y(s)}\d s
+\end{equation*}
+\noindent for all $t \in J_0$. Since $f \circ y \in \Cscr(J_0;\mathbb{R}^n)$, the first fundamental theorem of calculus \cite[282]{spivak:calculus:1994} implies $y'(t) = f\del[1]{y(s)}$ for all $t \in J_0$. Furthermore clearly $y(t_0) = t_0$ and $y \in \Cscr^1(J_0;U)$. Hence $y$ is a solution of (\ref{eq:autonomous_ivp}). 
+\end{proof}
+
+\begin{lemma}[Contraction Lemma]
+Let $(M,d)$ be a nonempty complete metric space and $T$ be a contraction. Then there exists a unique fixed point for $T$.
+\label{lem:contraction}
+\end{lemma}
+
+\begin{theorem}[Existence of ODE Solutions]
+Let $n \in \mathbb{Z}$, $n > 0$, $U \subseteq \mathbb{R}^n$ open, $f \in \Cscr(U;\mathbb{R}^n)$ locally Lipschitz continuous and $(t_0,x_0) \in \mathbb{R} \times U$. Then there exists an open interval $J_0 \subseteq \mathbb{R}$ and an open subset $U_0 \subseteq U$, such that $(t_0,x_0) \in J_0 \times U_0$ and for each $y_0 \in U_0$ a mapping $y \in \Cscr^1(J_0;U)$ satisfying
+\begin{equation}
+\begin{cases}
+y'(t) = f\del[1]{y(t)}\\
+y(t_0) = y_0
+\end{cases}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Since $F$ is locally Lipschitz continuous on $U$, there exists a neighbourhood $V$ of $x_0$, such that $f$ is Lipschitz continuous on $V$. Since $(U,\abs[0]{\cdot})$ has the same topology as the subspace $U \subseteq \mathbb{R}^n$ by \cite[50]{lee:topological_manifolds:2011}, we find $W \subseteq \mathbb{R}^n$ open, such that $V = U \cap W$. But since $U$ is open, so is $V$ open in $\mathbb{R}^n$. Hence we may assume that $f$ is Lipschitz continuous on $U$. Let $L > 0$ denote a Lipschitz constant of $f$. Now choose $r > 0$ so, such that $\overline{B}_r(x_0) \subseteq U$. Furthermore let
+\begin{equation*}
+M := \sup_{x \in \overline{B}_r(x_0)} \abs[0]{f(x)} < \infty
+\end{equation*}
+\noindent since $\overline{B}_r(x_0)$ is compact and $\delta, \varepsilon > 0$ such that
+\begin{equation*}
+\delta < \frac{r}{2} \qquad \text{and} \qquad \varepsilon < \min\del[3]{\frac{r}{2M},\frac{1}{L}}.
+\end{equation*}
+Define 
+\begin{equation*}
+J_0 := \intoo{t_0 - \varepsilon,t_0 + \varepsilon} \subseteq \mathbb{R} \qquad \text{and} \qquad U_0 := B_\delta(x_0) \subseteq U.
+\end{equation*}
+For any $y_0 \in U_0$, let
+\begin{equation*}
+A_{y_0} := \cbr[1]{y \in \Cscr(J_0;\overline{B}_r(x_0)) : y(t_0) = y_0}.
+\end{equation*}
+Clearly $A_{y_0} \neq \varnothing$ since $y = y_0$ is in $A_{y_0}$. $\overline{B}_r(x_0)$ is clearly bounded and complete since it is a closed subset of a complete metric space. Thus we can consider the metric space $(A_{y_0},d_\infty)$, where $d_\infty$ is defined as in proposition \ref{prop:complete}. From the proof of proposition \ref{prop:complete} we also see that if $(y_\nu)_{\nu \in \mathbb{N}}$ is a Cauchy sequence in $A_{y_0}$ and $y := \lim_{\nu \to \infty}y_\nu$, then $y(t_0) = \lim_{\nu \to \infty}y_\nu(t_0) = y_0$. Hence $y \in A_{y_0}$ and so $(A_{y_0},d_\infty)$ is complete. For $y \in A_{y_0}$ define for $t \in J_0$
+\begin{equation*}
+T(y)(t) := y_0 + \int_{t_0}^tf\del[1]{y(s)}\d s.
+\end{equation*}
+Clearly $T$ is continuous and $T(y)(t_0) = y_0$. Furthermore
+\begin{align*}
+\abs[1]{T(y)(t) - x_0} &= \abs[3]{y_0 + \int_{t_0}^tf\del[1]{y(s)}\d s - x_0}\\
+&\leq \abs[0]{y_0 - x_0} + \int_{t_0}^t \abs[1]{f\del[1]{y(s)}}\d s\\
+&< \delta + M\abs[0]{t - t_0}\\
+&< \delta + M\varepsilon\\
+&< r.
+\end{align*}
+\noindent for all $t \in J_0$. Hence $T : A_{y_0} \to A_{y_0}$. Furthermore for $y_1,y_2 \in A_{y_0}$ we have that 
+\begin{align*}
+d_\infty\del[1]{T(y_1),T(y_2)} &= \sup_{t \in J_0} \abs[3]{\int_{t_0}^t f\del[1]{y_1(s)}\d s - \int_{t_0}^ tf\del[1]{y_2(s)}\d s}\\
+&\leq \sup_{t \in J_0} \int_{t_0}^t \abs[1]{f\del[1]{y_1(s)} - f\del[1]{y_2(s)}}\d s\\
+&\leq L\sup_{t \in J_0}\int_{t_0}^t\abs[1]{y_1(s) - y_2(s)}\d s\\
+&\leq L\varepsilon d_\infty(y_1,y_2).
+\end{align*}
+Since $0 < L\varepsilon < 1$, $T$ is a contraction. Hence by the contraction lemma \ref{lem:contraction} there exists a unique fixed point $y \in A_{y_0}$. This $y$ is a solution to the initial value problem by lemma \ref{lem:reformulation}.
+\end{proof}
