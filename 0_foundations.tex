@@ -1,0 +1,16 @@
+\chapter{Foundations}
+\section{Set Theory}
+\subsection{Relations}
+\begin{exercise}
+Let $X$ be a set and $\sim$ an equivalence relation on $X$. Then $X/{\sim}$ is a partition of $X$. Conversly, given any partition $\Cscr$ of $X$, there exists a unique equivalence relation ${\sim}_\Cscr$ on $X$ such that $X/ {\sim}_\Cscr = \Cscr$.
+\label{ex:1.1}
+\end{exercise}
+
+\begin{solution}
+Let $\sim$ be an equivalence relation on $X$. If $X = \varnothing$, then $X/{\sim} = \varnothing$ which is a partition of the empty set $\varnothing$. So assume that $X \neq \varnothing$. Let $\eqclass{x} \in X/{\sim}$. Then $\eqclass{x} \neq \varnothing$ since $x \in \eqclass{x}$ by reflexivity. Furthermore, let $\eqclass{y} \in X/{\sim}$. Now we have to show that if $\eqclass{x} \neq \eqclass{y}$ then $\eqclass{x} \cap \eqclass{y} = \varnothing$. So assume that $z \in \eqclass{x} \cap \eqclass{y}$. Then $z \sim x$ and $z \sim y$ which implies $x \sim y$ by symmetry and transitivity from which easily follows that $\eqclass{x} = \eqclass{y}$. Also $X = \cup_{x \in X} \eqclass{x}$ holds and thus $X/{\sim}$ is a partition of $X$.\\
+Define a relation on $X$ by
+\begin{equation*}
+x \sim_\Cscr y \quad : \Leftrightarrow \quad \exists A \in \Cscr : x,y \in A.
+\end{equation*}
+Then it is easily seen that $\sim_\Cscr$ is an equivalence relation on $X$ where $\eqclass{x} = A$ for some $A \in \Cscr$ such that $x \in A$. Thus $X/ {\sim}_\Cscr = \Cscr$.
+\end{solution}

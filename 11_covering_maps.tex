@@ -1,0 +1,18 @@
+\chapter{Covering Maps}
+\section{Definitions and Basic Properties}
+
+\begin{exercise}
+For $n \in \Zbb$, $n \geq 1$, define the \bld{$n$-th power map} $p_n : \Sbb^1 \to \Sbb^1$ by $p_n(z) := z^n$. Show that $p_n$ is a covering map.
+\end{exercise}
+
+\begin{solution}
+The map $p_n$ is surely continuous. We show surjectivity. Let $z^n \in p_n(\Sbb^1)$. Then we have that $\abs[0]{z^n} = \abs[0]{z}^n = 1$ and thus $p_n(\Sbb^1) \subseteq \Sbb^1$. Conversly, every $z \in \Sbb^1$ can be written as $e^{i\varphi}$ for some $\varphi \in \Rbb$. Hence define $\widetilde{z} := e^{i\varphi/n} \in \Sbb^1$. Then we have that $p_n(\widetilde{z}) = z$ and thus $\Sbb^1 \subseteq p_n(\Sbb^1)$. Now let $z_0 \in \Sbb^1$. Define $U_{z_0} := \Sbb^1 \setminus \cbr[0]{-z_0}$. Then $p_n^{-1}(U_{z_0}) = \cbr[0]{z \in \Sbb^1 : z^n \neq -z_0}$, or equivalently $p_n^{-1}(U_{z_0}) = \cbr[0]{z \in \Sbb^1 : z^n = -z_0}^c$. Hence 
+\end{solution}
+
+\begin{exercise}
+Let $f : \intoo{0,2} \to \Sbb^1$ be defined by $f(x) := e^{2\pi i x}$. Show that $f$ is not a covering map.
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}

@@ -1,4 +1,58 @@
 \chapter{Tensors}
+\section{Multilinear Algebra}
+We follow the terminology established in \cite[312]{lee:smooth_manifolds:2013}. 
+\begin{definition}
+Let $V$ be a finite-dimensional real vector space and $k,l \in \mathbb{Z}$ where $k,l \geq 0$. Then we define the \bld{space of mixed tensors of type $(k,l)$ on $V$} by
+\begin{equation}
+T^{(k,l)}(V) := \underbrace{V \otimes \dots \otimes V}_{k} \otimes \underbrace{V^* \otimes \dots \otimes V^*}_{l}
+\end{equation}
+\noindent if $(k,l) \neq (0,0)$ and
+\begin{equation}
+T^{(0,0)}(V) := \mathbb{R}
+\end{equation}
+\noindent otherwise.
+\end{definition}
+
+\begin{proposition}[Tensor Characterization Lemma]
+Let $V$ be a finite-dimensional real vector space and $k,l \in \mathbb{Z}$ where $k \geq 1$, $l \geq 0$ and $(k,l) \neq (1,0)$. Then 
+\begin{equation}
+\boxed{T^{(k,l)}(V) \cong \Lrm\del[1]{(V^*)^{k - 1},V^l;V}.}
+\end{equation}
+\end{proposition}
+
+\begin{lemma}
+
+\end{lemma}
+
+\begin{proof}
+Define
+\begin{equation*}
+\Phi : V^k \times (V^*)^l \to \Lrm\del[1]{(V^*)^{k - 1},V^l;V}
+\end{equation*}
+\noindent by letting
+\begin{equation*}
+\Phi(v,\varphi)(\psi,w) := \varphi_1(w_1) \cdots \varphi_l(w_l)\psi_1(v_1) \cdots \psi_{k-1}(v_{k-1})v_k.
+\end{equation*}
+It is easyily checked that $\Phi(v,\varphi) \in \Lrm\del[1]{(V^*)^{k - 1},V^l;V}$ and that $\Phi$ is multilinear. By the characteristic property of the tensor product space \cite[309]{lee:smooth_manifolds:2013} there exists a unique linear mapping 
+\begin{equation*}
+\widetilde{\Phi} : V^{\otimes k} \otimes (V^*)^{\otimes l} \to \Lrm\del[1]{(V^*)^{k - 1},V^l;V}
+\end{equation*}
+\noindent such that 
+\begin{equation*}
+\Phi = \widetilde{\Phi} \circ \pi.
+\end{equation*}
+Now we claim that $\ker\widetilde{\Phi} = \cbr{0}$. Let $v \otimes \varphi \in \ker\widetilde{\Phi}$ and assume that $v,\varphi \neq 0$. Hence we find $w \in V^l$ such that $\varphi_i(w_i) \neq 0$ for all $i = 1,\dots,l$. Furthermore since $v_1,\dots,v_k \neq 0$, we find $\psi \in (V^*)^{k-1}$ such that $\psi_i(v_i) \neq 0$ for all $i = 1,\dots,k-1$. For example, if $(e_j)$ is a basis of $V$ then $v_i = r^j_i e_i$ where at least one $r_i^j \neq 0$, say $r_i^k$. Then let $\psi_i := e^*_k$ where $(e_j^*)$ denotes the corresponding basis of $V^*$. Then
+\begin{equation*}
+\widetilde{\Phi}(v,\varphi)(\psi,w) = \varphi_1(w_1) \cdots \varphi_l(w_l)\psi_1(v_1) \cdots \psi_{k-1}(v_{k-1})v_k \neq 0.
+\end{equation*}
+Contradiction. Thus the claim holds and we get that $\widetilde{\Phi}$ is injective. Since 
+\begin{equation*}
+\dim \del[1]{V^{\otimes k} \otimes (V^*)^{\otimes l}} = (\dim V)^{k + l} = \dim \del[1]{\Lrm\del[1]{(V^*)^{k - 1},V^l;V}}
+\end{equation*}
+\noindent by \cite[309]{lee:smooth_manifolds:2013}
+\end{proof}
+
+
 \section{Pullbacks of Tensor Fields}
 
 \begin{exercise}[Properties of Tensor Pullbacks]

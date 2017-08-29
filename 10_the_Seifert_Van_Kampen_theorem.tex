@@ -1,0 +1,41 @@
+\chapter{The Seifert-Van Kampen Theorem}
+\section{Fundamental Groups of Compact Surfaces}
+\begin{exercise}
+Let $G$ be a group. Recall, that for $g,h \in G$ the \bld{commutator of $g$ and $h$}, written $\sbr[0]{g,h}$, is defined to be
+\begin{equation}
+\sbr[0]{g,h} := ghg^{-1}h^{-1}.
+\end{equation}
+Furthermore, define
+\begin{equation}
+\sbr[0]{G,G} := \langle \cbr[0]{\sbr[0]{g,h} : g,h \in G} \rangle.
+\end{equation}
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item Show that $\sbr[0]{G,G} \unlhd G$. $\sbr[0]{G,G}$ is called the \bld{commutator subgroup of $G$}.
+\item $\sbr[0]{G,G}$ is trivial if and only if $G$ is abelian.
+\item $G/\sbr[0]{G,G}$ is abelian.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), set 
+\begin{equation*}
+X := \cbr[0]{\sbr[0]{g,h} : g,h \in G}.
+\end{equation*}
+Then by \cite[31]{karpfinger:algebra:2013} we have that 
+\begin{equation*}
+\langle X \rangle = \cbr[0]{x_1 \cdots x_n : n \in \mathbb{Z}, n \geq 1,x_1,\dots,x_n \in X \cup X^{-1}}.
+\end{equation*}
+Since for any $g \in G$ and $x \in \langle X \rangle$ we have
+\begin{equation*}
+gxg^{-1} = gx_1 \cdots x_n g^{-1} = gx_1g^{-1}gx_2 g^{-1} \cdots gx_{n-1}g^{-1}gx_ng^{-1}
+\end{equation*}
+\noindent it is enough to show that $g\sbr[0]{h,k}g^{-1} \in \langle X \rangle$ for every $h,k \in G$. But
+\begin{equation*}
+g\sbr[0]{h,k}g^{-1} = \sbr[0]{ghg^{-1},gkg^{-1}}
+\end{equation*}
+\noindent and thus $\sbr[0]{G,G} \unlhd G$. For (b), assume that $\sbr[0]{G,G} = \cbr[0]{1}$. Since $X \subseteq \sbr[0]{G,G}$, we have that $ghg^{-1}h^{-1} = 1$ for all $g,h \in G$ which is equivalent to $gh = hg$. Hence $G$ is abelian. Conversly, assume that $G$ is abelian. Then $\sbr[0]{g,h} = 1$ for all $g,h \in G$, which implies $X = \cbr[0]{1}$ and thus $\sbr[0]{G,G}$ is trivial. For (c), let $x\sbr[0]{G,G},y\sbr[0]{G,G} \in G/\sbr[0]{G,G}$. Then we see that
+\begin{equation*}
+\sbr[0]{x\sbr[0]{G,G},y\sbr[0]{G,G}} = \sbr[0]{G,G}.
+\end{equation*}
+Hence $\sbr[0]{G/\sbr[0]{G,G},G/\sbr[0]{G,G}}$ is trivial and the claim follows from part (b).
+\end{solution}

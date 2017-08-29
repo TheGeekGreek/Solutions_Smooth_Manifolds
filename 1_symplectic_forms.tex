@@ -1,0 +1,170 @@
+\chapter{Symplectic Forms}
+\section{Symplectic Linear Algebra}
+\begin{exercise}
+Let $V$ be a finite dimensional real vector space and $\omega$ be a $2$-covector on $V$. Then $\Omega$ is nondegenerate if and only if for each nonzero $v \in V$ there exists $w \in V$ such that $\omega(v,w) \neq 0$.
+\end{exercise}
+
+\begin{solution}
+We have that 
+\begin{equation*}
+\ker \widehat{\omega} = \cbr[0]{v \in V : \forall w \in V\del[0]{\omega(v,w) = 0}}.
+\end{equation*}
+Hence if $\omega$ is nondegenerate we have that $\widehat{\omega}$ is an isomorphism and thus $\ker\widehat{\omega} = \cbr[0]{0}$. Conversly, we have that $\ker\widehat{\omega} = \cbr[0]{0}$ and since $\dim V = \dim V^*$, we have that $\widehat{\omega}$ is an isomorphism.
+\end{solution}
+
+\begin{exercise}
+Let $(V,\omega)$ be a symplectic vector space and $S,T \subseteq V$ be linear subspaces.
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item $\dim S + \dim S^\omega = \dim V$.
+\item $\del[1]{S^\omega}^\omega = S$.
+\item $S \subseteq T \Leftrightarrow T^\omega \subseteq S^\omega$.
+\item $\omega\vert_{S}$ nondegenerate $\Leftrightarrow S \cap S^\omega = \cbr[0]{0} \Leftrightarrow V = S \oplus S^\omega$.
+\item If $S \subseteq S^\omega$, then $\dim S \leq \frac{1}{2}\dim V$.
+\item If $S$ is of codimension $1$, then $S$ is coisotropic. 
+\item $S$ lagrangian $\Leftrightarrow$ $S$ isotropic and coisotropic $\Leftrightarrow$ $S = S^\omega$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For proving (a), consider the mapping $\Phi : V \to S^*$ defined by $\Phi(v) := \omega(v,\cdot)\vert_S$. Clearly, $\ker \Phi = S^\omega$. Let $\varphi \in S^*$. By exercise B.13 \cite[623]{lee:smooth_manifolds:2013}, there exists an extension $\widehat{\varphi} \in V^*$ of $\varphi$. Since $\widehat{\omega}$ is an isomorphism, there exists $v \in V$ such that $\widehat{\varphi} = \omega(v,\cdot)$. This implies $\widehat{\varphi}\vert_S = \omega(v,\cdot)\vert_S$. Hence we get that $\Phi$ is surjective and thus $\Phi(V) = S^*$. Hence the rank-nullity law \cite[627]{lee:smooth_manifolds:2013} implies that 
+\begin{equation*}
+\dim V = \dim S^* + \dim S^\omega = \dim S + \dim S^\omega.
+\end{equation*}
+For proving (b), let $v \in S$. Then for any $u \in S^\omega$ we have that $\omega(v,u) = - \omega(u,v) = 0$ and thus $S \subseteq \del[1]{S^\omega}^\omega$. Hence $S$ is a linear subspace of $\del[1]{S^\omega}^\omega$. Furthermore part (a) yields
+\begin{equation*}
+\dim S = \dim V - \dim S^\omega = \dim \del[1]{S^\omega}^\omega
+\end{equation*}
+\noindent Thus exercise B.4. (b) \cite[620]{lee:smooth_manifolds:2013} implies that $\del[1]{S^\omega}^\omega = S$.\\
+For (c), suppose that $S \subseteq T$ and let $v \in T^\omega$. Then for any $u \in S$ we have that $\omega(v,u) = 0$ and thus $T^\omega \subseteq S^\omega$. Conversly, suppose that $T^\omega \subseteq S^\omega$. By part (b) we can also show that $\del[1]{S^\omega}^\omega \subseteq \del[1]{T^\omega}^\omega$. But this holds as one can easily see. Thus $S \subseteq T$ and the statement follows.\\
+For (d), we show the two equivalences separately. We have that
+\begin{equation*}
+\ker \widehat{\omega\vert_{S}} = \cbr[0]{v \in S : \forall w \in S\del[0]{\omega(v,w) = 0}} = S \cap S^\omega.
+\end{equation*}
+So $\omega\vert_{S}$ is nondegenerate if and only if $S \cap S^\omega = \cbr[0]{0}$. For the second equivalence, assume that $S \cap S^\omega = \cbr[0]{0}$. Then by \cite[100]{fischer:lineare_algebra:2014} and part (a) we have that
+\begin{equation*}
+\dim(S + S^\omega) = \dim S + \dim S^\omega - \dim(S \cap S^\omega) = \dim S + \dim S^\omega = \dim V.
+\end{equation*}
+Thus exercise B.4. (b) \cite[620]{lee:smooth_manifolds:2013} implies that $S + S^\omega = V$. Since $S \cap S^\omega = \cbr[0]{0}$ holds, we have $V = S \oplus S^\omega$ by \cite[101]{fischer:lineare_algebra:2014}. The other implication follows simply by definition of the direct sum.\\
+(e) directly follows from (a) and \cite[620]{lee:smooth_manifolds:2013} since
+\begin{equation*}
+2\dim S \leq \dim S + \dim S^\omega = \dim V.
+\end{equation*}
+For (f) let $S$ have codimension $1$. Hence by part (a) we get that $\dim S^\omega = 1$. Thus any element in $S^\omega$ can be written as $\lambda v$, where $\lambda \in \Rbb$ and $v \in S^\omega \setminus \cbr[0]{0}$. Hence $\omega(\lambda v, \mu v) =  \lambda\mu \omega(v,v) = 0$ and thus $S^\omega \subseteq \del[1]{S^\omega}^\omega$ which is by part (b) equivalent to $S^\omega \subseteq S$. For proving (g), we first observe that the second equivalence is trivial. Now assume that $S$ is lagrangian. From part (a) immediately follows that $\dim S = \dim S^\omega$. Since $S \subseteq S^\omega$ we get that $S = S^\omega$. Conversly, assume that $S = S^\omega$. Using again part (a) we get that $2\dim S = \dim V$.
+\end{solution}
+
+\begin{exercise}
+~
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item If $\omega \in \Lambda^2(V^*)$, then $\omega = \sum_{i = 1}^n e^*_i \wedge f^*_i$.
+\item
+\item Deduce that any symplectic manifold $(M,\omega)$ is canonically oriented. Does the M\"obius band admit a symplectic structure?
+\item
+\end{enumerate}
+\label{ex:orientable}
+\end{exercise}
+
+\begin{solution}
+For (a), we adapt the notation introduced in \cite[351--354]{lee:smooth_manifolds:2013} and use the result about a basis of $\Lambda^k(V^*)$. Letting 
+\begin{equation*}
+(\varepsilon^1, \dots, \varepsilon^{k + 2n}) := (u^*_1,\dots,u^*_k,e^*_1,\dots,e^*_n,f^*_1,\dots,f^*_n)
+\end{equation*}
+\noindent where $(u_1,\dots,u_k,e_1,\dots,e_n,f_1,\dots,f_n)$ is the basis of $V$ obtained in \cite[3]{dasilva:symplectic:2008}. Then we get
+\begin{align*}
+\omega =& \sum_{\cbr[0]{I : 0 \leq i_1 < i_2 \leq k + 2n}} \omega_I\varepsilon^I\\
+=& \sum_{\cbr[0]{I : 1 \leq i_1 \leq k, i_1 < i_2 \leq k + 2n}} \omega(u_{i_1},\varepsilon^{i_2})\varepsilon^I + \sum_{\cbr[0]{I : k < i_1 < i_2 \leq k + n}}\omega(e_{i_1},e_{i_2})\varepsilon^I\\
+&+ \sum_{\cbr[0]{I : k < i_1 \leq k + n < i_2 \leq k + 2n}}\omega(e_{i_1},f_{i_2})\varepsilon^I + \sum_{\cbr[0]{I : k + n < i_1 < i_2 \leq k + 2n}}\omega(f_{i_1},f_{i_2})\varepsilon^I\\
+=& \sum_{\cbr[0]{I : k < i_1 \leq k + n < i_2 \leq k + 2n}}\delta^{i_1}_{i_2 - n}\varepsilon^I\\
+=& \sum_{\cbr[0]{k < i_1 \leq k + n}} \varepsilon^{i_1(i_1 + n)}\\
+=& \sum_{i = 1}^n e^*_i \wedge f^*_i
+\end{align*}
+\noindent by \cite[356]{lee:smooth_manifolds:2013}.\\
+For (c), part (a) implies that $(\omega_p)^n \neq 0$ for all $p \in M$. Thus $\omega^n \neq 0$. Clearly, $\omega^n$ is a top form. Thus by \cite[381]{lee:smooth_manifolds:2013}, $\omega^n$ induces a unique orientation on $M$. Since the M\"obius band is not orientable by \cite[393]{lee:smooth_manifolds:2013}, we have that the M\"obius band does not admit a symplectic structure.
+\end{solution}
+
+\begin{exercise}
+Let $(M,\omega)$ be a $2n$-dimensional compact symplectic manifold. 
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item Show that $\sbr[0]{\omega^n} \in H_{\dRrm}^{2n}(M)$ is nonzero.
+\item Conclude that $\sbr[0]{\omega} \neq 0$.
+\item $\Sbb^{2n}$ does not admit a symplectic structure for $n > 1$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), assume that $\sbr[0]{\omega^n} = 0$. Thus there exists an exact form $\alpha \in \Omega^{2n}(M)$, such that $\omega^n + \alpha = 0$. Hence there exists $\beta \in \Omega^{2n - 1}(M)$, such that $\omega^n + \d \beta = 0$. By exercise \ref{ex:orientable} (c) we have that $\omega^n$ determines a unique orientation of $M$ for which $\omega^n$ is positively oriented. Hence linearity, positivity and Stoke's theorem \cite[407,411]{lee:smooth_manifolds:2013} yield
+\begin{equation*}
+0 < \int_M \omega = - \int_M \d \beta = \int_{\partial M} \beta = 0.
+\end{equation*} 
+\noindent since $\partial M = \varnothing$. Contradiction.\\
+For (b), we use that one can define a product for cohomology classes (see \cite[464]{lee:smooth_manifolds:2013}). Then one has that $\sbr[0]{\omega^n} = \sbr[0]{\omega}^n$.\\
+For (c), by \cite[450]{lee:smooth_manifolds:2013} we have that $H_{\dRrm}^2(\Sbb^{2n}) \cong 0$. Hence if $\Sbb^{2n}$ admits a symplectic structure $\omega$, then by part (b) we would have $\sbr[0]{w} \neq 0$, which contradicts the fact that $H_{\dRrm}^2(\Sbb^{2n}) \cong 0$.
+\end{solution}
+
+\begin{exercise}
+Let $M$ and $N$ be smooth manifolds, $F : M \to N$ a diffeomorphism and $A \in \Gamma\del[1]{T^{(0,k)}TN}$, $k \in \Zbb$, $k \geq 1$. Then 
+\begin{equation}
+F^*A(X_1,\dots,X_k) = A(F_*X_1,\dots,F_*X_k) \circ F
+\end{equation}
+\noindent holds for all $X_1,\dots,X_k \in \Xfrak(M)$.
+\end{exercise}
+
+\begin{solution}
+Let $p \in M$. Then
+\begin{align*}
+F^*A(X_1,\dots,X_k)(p) &= (F^*A)_p(X_1\vert_p,\dots,X_k\vert_p)\\
+&= A_{F(p)}\del[1]{\d F_p(X_1\vert_p),\dots,\d F_p(X_k\vert_p)}\\
+&= A_{F(p)}\del[1]{(F_*X_1)_{F(p)},\dots,(F_*X_k)_{F(p)}}\\
+&= A\del[1]{F_*X_1,\dots,F_*X_k}\del[1]{F(p)}.
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+~
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item Let $(M,\omega)$ be a symplectic manifold and $\alpha \in \Omega^1(M)$ such that $\omega = -\d \alpha$. Then there exists a unique vector field $X \in \Xfrak(M)$, such that $X \intprod \omega = -\alpha$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), we observe that $\widehat{\omega} : TM \to T^*M$ is a smooth bundle isomorphism (see \cite[341]{lee:smooth_manifolds:2013}). Thus we define $X : M \to TM$ by 
+\begin{equation*}
+X := -\widehat{\omega}^{-1}(\alpha).
+\end{equation*}
+As a composition of smooth maps, $X$ is smooth and clearly, it is a section of the projection $\pi : TM \to M$ by definition. Hence $X \in \Xfrak(M)$. Furthermore $X \intprod \omega = \widehat{\omega}(X) = -\alpha$.\\
+Let $\rho$ denote the flow of $X$ and define 
+\begin{equation*}
+\theta_t := g \circ \rho_t \circ g^{-1}, \qquad t \in \Rbb.
+\end{equation*}
+Then we have that
+\begin{equation*}
+\theta_0 = g \circ \rho_0 \circ g^{-1} = g \circ \id_M \circ g^{-1} = \id_M
+\end{equation*}
+\noindent and for $t \in \Rbb$, $p \in M$
+\begin{align*}
+\del[1]{\theta^{(p)}}'(t) &= \del[1]{g \circ \rho^{(g^{-1}(p))}}'(t)\\ 
+&= \d g_{\rho^{(g^{-1}(p))}(t)}\del[1]{\rho^{(g^{-1}(p))}}'(t)\\
+&= \d g_{\rho^{(g^{-1}(p))}(t)} X_{\rho^{(g^{-1}(p))}(t)}\\
+&= \del[0]{g_* X}_{g(\rho^{(g^{-1}(p))})(t)}\\
+&= \del[0]{g_* X}_{\theta^{(p)}(t)}.
+\end{align*}
+Now we make use of problem 12-10 \cite[326]{lee:smooth_manifolds:2013}. By the tensor characterization lemma \cite[318]{lee:smooth_manifolds:2013}, we have that $\omega$ induces a $\Cscr^\infty(M)$-linear mapping
+\begin{equation*}
+\omega: \Xfrak(M) \times \Xfrak(M) \to \Cscr^\infty(M).
+\end{equation*}
+Let $Y \in \Xfrak(M)$. Then
+\begin{align*}
+\omega(g_*X,Y) &= (g^*\omega)(g_*X,Y)\\
+&= (g^*\omega)\del[1]{g_*X,Y}\\
+\end{align*}
+For (b), let $X := X^i \frac{\partial}{\partial x^i} + Y^i \frac{\partial}{\partial \xi^i}$. We calculate
+\begin{align*}
+X \intprod \omega &= \sum_{i = 1}^n \del[1]{X \intprod (\d x^i \wedge \d \xi^i)}\\
+&= \sum_{i = 1}^n \del[1]{(X \intprod \d x^i) \wedge \d y^i) - \d x^i \wedge (X \intprod \d \xi^i)}\\
+&= \sum_{i = 1}^n \del[1]{X^i \d \xi^i - Y^i \d x^i}.
+\end{align*}
+Since $X \intprod \omega = -\alpha$, we get that 
+\begin{equation*}
+X = \xi^i\frac{\partial}{\partial \xi^i}.
+\end{equation*}
+Define an isotopy $\rho: \Rbb \times T^*M \to T^*M$ by $\rho(t,p) := (x,e^t\xi)$, where $p = (x,\xi)$. Then we have that $\rho_0 = \id_M$ and 
+\end{solution}

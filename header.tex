@@ -24,6 +24,7 @@
 \usepackage{commath}
 %Ensures that references are \textup
 \usepackage{upref}
+\usepackage{xfrac}
 %Main style theorem environment
 \newtheoremstyle{main} 		             	 		%Stylename
   	{}	                                     		%Space above
@@ -175,3 +176,34 @@
 %------------
 \usepackage{enumitem}
 \setlist[enumerate]{label=\textup{(}\roman*\textup{)}, leftmargin = 25pt}
+
+\newcommand{\eqclass}[1]{\sbr[0]{#1}}
+\newcommand{\cat}[1]{\mathsf{#1}}
+\newcommand{\Sbb}{\mathbb{S}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\clos}[1]{\overline{#1}}
+\newcommand{\dRrm}{\mathrm{dR}}
+\newcommand{\Xfrak}{\mathfrak{X}}
+
+\usepackage{subcaption}
+\usepackage[all]{xy}
+
+\usepackage{pict2e}
+\makeatletter
+\DeclareRobustCommand{\intprod}{%
+  \mathbin{\mathpalette\int@prod{(0.1,0)(0.9,0)(0.9,0.8)}}%
+}
+\DeclareRobustCommand{\intprodr}{%
+  \mathbin{\mathpalette\int@prod{(0.1,0.8)(0.1,0)(0.9,0)}}}
+
+\newcommand{\int@prod}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1+$}%
+  \setlength\unitlength{\wd\z@}%
+  \begin{picture}(1,1)
+  \roundcap
+  \polyline#2
+  \end{picture}%
+  \endgroup
+}
+\makeatother

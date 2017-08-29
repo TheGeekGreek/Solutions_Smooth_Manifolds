@@ -1,0 +1,23 @@
+\chapter{Connectedness and Compactness}
+\section{Connectedness}
+\begin{exercise}
+Let $X$ be a nonempty connected topological space and $\sim$ an equivalence relation on $X$ such that every equivalence class is open. Then there is exactly one equivalence class.
+\end{exercise}
+
+\begin{solution}
+Let $x \in X$. If $\eqclass{x} = X$, there is nothing to show. So assume that $\eqclass{x} \neq X$. By exercise \ref{ex:1.1} we have that $X/{\sim}$ is a partition of $X$ and thus $X = \eqclass{x} \cup \del[1]{\cup_{y \in \eqclass{x}^c}\eqclass{y}}$. Since $\eqclass{x}$ and $\cup_{y \in \eqclass{x}^c}\eqclass{y}$ are nonempty, disjoint and open by assumption, they disconnect $X$, contradicting the connectedness of $X$.
+\end{solution}
+
+\section{Local Compactness}
+
+\begin{exercise}
+In a Baire space, every meager subset has a dense complement.
+\end{exercise}
+
+\begin{solution}
+Let $F$ be a meager subset of the Baire space. Thus we can write $F = \cup_n F_n$, where each $F_n$ is nowhere dense. Therefore $F^c = \cap_n F_n^c$ and $\cap_n \clos{F_n}^c \subseteq \cap_n F_n^c$. By the definition of a Baire space, $\cap_n \clos{F_n}^c$ is dense since each $\clos{F_n}$ is closed. Thus 
+\begin{equation*}
+X \supseteq \clos{F^c} \supseteq \clos{\cap_n \clos{F_n}^c} = X
+\end{equation*}
+\noindent and therefore $\clos{F^c}$ is dense.
+\end{solution}

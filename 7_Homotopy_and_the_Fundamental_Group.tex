@@ -14,3 +14,119 @@ G(s,2t - 1) & \frac{1}{2} \leq t \leq 1
 \end{align*}
 \noindent is a path homotopy from $f$ to $h$, hence $f \sim g$.
 \end{solution}
+
+\begin{exercise}
+Let $X$ be a path-connected topological space.
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item Let $f,g:I \to X$ be two paths from $p$ to $q$. Show that $f \sim g$ if and only if $f\overline{g} \sim c_p$.
+\item Show that $X$ is simply connected if and only if any two paths in $X$ with the same initial and terminal points are path-homotopic.
+\item Let $A \subseteq \mathbb{R}^n$ be convex. Then $A$ is simply connected.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), assume $f \sim g$. Hence $\eqclass{f} = \eqclass{g}$ and by the properties of path class products \cite[189]{lee:topological_manifolds:2011} we get
+\begin{equation*}
+\eqclass{f\overline{g}} = \eqclass{f}\eqclass{\overline{g}} = \eqclass{g} \eqclass{\overline{g}} = \eqclass{c_p}
+\end{equation*} 
+\noindent and thus $f\overline{g} \sim c_p$. Conversly, $f\overline{g} \sim c_p$ implies $\eqclass{f\overline{g}} = \eqclass{c_p}$ and thus
+\begin{equation*}
+\eqclass{g} = \eqclass{c_p}\eqclass{g} = (\eqclass{f\overline{g}}) \eqclass{g} = (\eqclass{f}\eqclass{\overline{g}})\eqclass{g} =\eqclass{f} (\eqclass{\overline{g}}\eqclass{g}) = \eqclass{f}\eqclass{c_q} = \eqclass{f}.
+\end{equation*}
+For (b), assume that $X$ is simply connected and let $f$ and $g$ be paths in $X$ from $p$ to $q$. Then $f\overline{g}$ is a loop based at $p$. Since $\pi_1(X,p) = \cbr[0]{\eqclass{c_p}}$, we get that $f\overline{g} \sim c_p$ and thus by part (a) that $f \sim g$. Conversly, let $f$ be a loop based at $p$. Hence $f \sim c_p$ and so $\pi_1(X,p)$ is trivial.
+For (c), let $f$ and $g$ be paths in $A$ from $p$ to $q$. Then by example 7.4 \cite[185--186]{lee:topological_manifolds:2011} we get that $f \sim g$. Hence by part (b) follows that $A$ is simply connected.
+\end{solution}
+
+\begin{corollary}
+$\mathbb{R}^n$ is simply connected.
+\end{corollary}
+
+\section{Categories and Functors}
+See \cite[57--58]{lane:cat:1971}.
+\begin{exercise}
+Let $G$ be a group and $N \unlhd G$. Define $F: \cat{Grp} \to \cat{Set}$ by 
+\begin{equation}
+F(H) := \cbr[0]{f \in \Hom(G,H) : N \subseteq \ker f}.
+\end{equation}
+\begin{enumerate}
+\item Show that $F$ is a functor.
+\item Show that $\langle \sfrac{G}{N},\pi \rangle$ is a universal element of the functor $F$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (i), we have to define first the action of $F$ on arrows of $\cat{Grp}$. Consider $A \xrightarrow{\varphi}{} B$. Define $F(\varphi) : F(A) \to F(B)$ by 
+\begin{equation*}
+F(\varphi)(f) := \varphi \circ f.
+\end{equation*}
+Let $f \in F(A)$. Then $F(\id_A)(f) = \id_A \circ f = f$ and thus $F(\id_A) = \id_{F(A)}$. Furthermore, for $B \xrightarrow{\psi}{} C$ we have that
+\begin{align*}
+F(\psi \circ \varphi)(f) &= (\psi \circ \varphi) \circ f\\
+&= \psi \circ (\varphi \circ f)\\
+&= \psi \circ F(\varphi)(f)\\
+&= F(\psi)\del[1]{F(\varphi)(f)}\\
+&= \del[1]{F(\psi) \circ F(\varphi)}(f)
+\end{align*}
+\noindent and so $F(\psi \circ \varphi) = F(\psi) \circ F(\varphi)$. Hence $F$ is a functor. For (ii), by proposition 4.7 \cite[20]{grillet:abstract_algebra:2007} we get that $\pi \in F(\sfrac{G}{N})$. Furthermore, consider $\langle A, \varphi \rangle$ for any $A$ object and $\varphi$ morphism in $\cat{Grp}$ such that $\varphi \in F(A)$. By the factorization theorem \cite[23]{grillet:abstract_algebra:2007} there exists a unique homomorphism $\psi: G \to A$ such that $\varphi = \psi \circ \pi$. Thus 
+\begin{equation*}
+F(\psi)(\pi) = \psi \circ \pi = \varphi
+\end{equation*}
+\noindent and thus $\langle \sfrac{G}{N},\pi \rangle$ is a universal element of the functor $F$.
+\end{solution}
+
+\begin{exercise}
+Let $\cat{C}$ be a category and $(X_\alpha)_{\alpha \in A}$ be a familiy of objects of $\cat{C}$. If $(S,\iota_\alpha)$ and $(S',\iota'_\alpha)$ are two coproducts of $(X_\alpha)_{\alpha \in A}$, then there exists a unique isomorphism $f : S \to S'$ such that $f \circ \iota_\alpha = \iota'_\alpha$ for all $\alpha \in A$.
+\end{exercise}
+
+\begin{solution}
+By the defining property of a coproduct there exist unique morphisms $f: S \to S'$ and $g: S' \to S$ as indicated in the commutative diagram below.
+\begin{figure}[h!tb]
+\begin{displaymath}
+    	\xymatrix{ & S \ar[dr]^f\\
+    		S' \ar[ur]^g & X_\alpha \ar[l]^{\iota_\alpha'}\ar[u]^{\iota_\alpha}\ar[r]_{\iota_\alpha'}\ar[d]_{\iota_\alpha} & S'\ar[dl]^g\\
+    		& S}
+\end{displaymath}
+\end{figure}
+\noindent Furthermore, above diagram yields
+\begin{equation*}
+(g \circ f) \circ \iota_\alpha = \iota_\alpha \qquad \text{and} \qquad (f \circ g) \circ \iota_\alpha' = \iota_\alpha'.
+\end{equation*}
+\noindent for all $\alpha \in A$ and thus the commutative diagrams
+\begin{figure}[h!tb]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{displaymath}
+    			\xymatrix{ S \ar[dr]^{g \circ f}\\
+    				X_\alpha \ar[u]^{\iota_\alpha}\ar[r]_{\iota_\alpha} & S }
+		\end{displaymath}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{displaymath}
+    			\xymatrix{ S' \ar[dr]^{f \circ g}\\
+    				X_\alpha \ar[u]^{\iota_\alpha'}\ar[r]_{\iota_\alpha'} & S' }
+		\end{displaymath}
+    \end{subfigure}
+\end{figure}
+Also
+\begin{figure}[h!tb]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{displaymath}
+    			\xymatrix{ S \ar[dr]^{\id_S}\\
+    				X_\alpha \ar[u]^{\iota_\alpha}\ar[r]_{\iota_\alpha} & S }
+		\end{displaymath}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{displaymath}
+    			\xymatrix{ S' \ar[dr]^{\id_{S'}}\\
+    				X_\alpha \ar[u]^{\iota_\alpha'}\ar[r]_{\iota_\alpha'} & S' }
+		\end{displaymath}
+    \end{subfigure}
+\end{figure}
+\noindent are commutative and so by the uniqueness property of the coproduct we get that 
+\begin{equation*}
+g \circ f = \id_S \qquad \text{and} \qquad f \circ g = \id_{S'}.
+\end{equation*}
+\end{solution}
