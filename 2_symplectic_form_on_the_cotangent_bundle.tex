@@ -1,0 +1,49 @@
+\chapter{Symplectic Form on the Cotangent Bundle}
+\section{Symplectic Volume}
+\begin{exercise}
+~
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item If $\omega \in \Lambda^2(V^*)$, then $\omega = \sum_{i = 1}^n e^*_i \wedge f^*_i$.
+\item
+\item Deduce that any symplectic manifold $(M,\omega)$ is canonically oriented. Does the M\"obius band admit a symplectic structure?
+\item
+\end{enumerate}
+\label{ex:orientable}
+\end{exercise}
+
+\begin{solution}
+For (a), we adapt the notation introduced in \cite[351--354]{lee:smooth_manifolds:2013} and use the result about a basis of $\Lambda^k(V^*)$. Letting 
+\begin{equation*}
+(\varepsilon^1, \dots, \varepsilon^{k + 2n}) := (u^*_1,\dots,u^*_k,e^*_1,\dots,e^*_n,f^*_1,\dots,f^*_n)
+\end{equation*}
+\noindent where $(u_1,\dots,u_k,e_1,\dots,e_n,f_1,\dots,f_n)$ is the basis of $V$ obtained in \cite[3]{dasilva:symplectic:2008}. Then we get
+\begin{align*}
+\omega =& \sum_{\cbr[0]{I : 0 \leq i_1 < i_2 \leq k + 2n}} \omega_I\varepsilon^I\\
+=& \sum_{\cbr[0]{I : 1 \leq i_1 \leq k, i_1 < i_2 \leq k + 2n}} \omega(u_{i_1},\varepsilon^{i_2})\varepsilon^I + \sum_{\cbr[0]{I : k < i_1 < i_2 \leq k + n}}\omega(e_{i_1},e_{i_2})\varepsilon^I\\
+&+ \sum_{\cbr[0]{I : k < i_1 \leq k + n < i_2 \leq k + 2n}}\omega(e_{i_1},f_{i_2})\varepsilon^I + \sum_{\cbr[0]{I : k + n < i_1 < i_2 \leq k + 2n}}\omega(f_{i_1},f_{i_2})\varepsilon^I\\
+=& \sum_{\cbr[0]{I : k < i_1 \leq k + n < i_2 \leq k + 2n}}\delta^{i_1}_{i_2 - n}\varepsilon^I\\
+=& \sum_{\cbr[0]{k < i_1 \leq k + n}} \varepsilon^{i_1(i_1 + n)}\\
+=& \sum_{i = 1}^n e^*_i \wedge f^*_i
+\end{align*}
+\noindent by \cite[356]{lee:smooth_manifolds:2013}.\\
+For (c), part (a) implies that $(\omega_p)^n \neq 0$ for all $p \in M$. Thus $\omega^n \neq 0$. Clearly, $\omega^n$ is a top form. Thus by \cite[381]{lee:smooth_manifolds:2013}, $\omega^n$ induces a unique orientation on $M$. Since the M\"obius band is not orientable by \cite[393]{lee:smooth_manifolds:2013}, we have that the M\"obius band does not admit a symplectic structure.
+\end{solution}
+
+\begin{exercise}
+Let $(M,\omega)$ be a $2n$-dimensional compact symplectic manifold. 
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item Show that $\sbr[0]{\omega^n} \in H_{\dRrm}^{2n}(M)$ is nonzero.
+\item Conclude that $\sbr[0]{\omega} \neq 0$.
+\item $\Sbb^{2n}$ does not admit a symplectic structure for $n > 1$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), assume that $\sbr[0]{\omega^n} = 0$. Thus there exists an exact form $\alpha \in \Omega^{2n}(M)$, such that $\omega^n + \alpha = 0$. Hence there exists $\beta \in \Omega^{2n - 1}(M)$, such that $\omega^n + \d \beta = 0$. By exercise \ref{ex:orientable} (c) we have that $\omega^n$ determines a unique orientation of $M$ for which $\omega^n$ is positively oriented. Hence linearity, positivity and Stoke's theorem \cite[407,411]{lee:smooth_manifolds:2013} yield
+\begin{equation*}
+0 < \int_M \omega = - \int_M \d \beta = \int_{\partial M} \beta = 0.
+\end{equation*} 
+\noindent since $\partial M = \varnothing$. Contradiction.\\
+For (b), we use that one can define a product for cohomology classes (see \cite[464]{lee:smooth_manifolds:2013}). Then one has that $\sbr[0]{\omega^n} = \sbr[0]{\omega}^n$.\\
+For (c), by \cite[450]{lee:smooth_manifolds:2013} we have that $H_{\dRrm}^2(\Sbb^{2n}) \cong 0$. Hence if $\Sbb^{2n}$ admits a symplectic structure $\omega$, then by part (b) we would have $\sbr[0]{w} \neq 0$, which contradicts the fact that $H_{\dRrm}^2(\Sbb^{2n}) \cong 0$.
+\end{solution}

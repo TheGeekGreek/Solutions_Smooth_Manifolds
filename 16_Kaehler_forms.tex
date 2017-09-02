@@ -1,0 +1,79 @@
+\chapter{K\"ahler Forms}
+\section{The Fubini-Study Structure}
+
+\begin{lemma}
+For every $z \in \Cbb^n$ there exists $A \in \Urm(n)$ such that $Az \in \Cbb \times \cbr[0]{0}^{n-1}$.
+\label{lem:rotation}
+\end{lemma}
+
+\begin{proof}
+If $z = 0$, for example $Iz = 0 \in \Cbb \times \cbr[0]{0}^{n-1}$. So let us assume that $\abs[0]{z} = 1$. Let $(e_\nu)$ denote the standard basis of $\Cbb^n$. Since $z \neq 0$, the set $\cbr[0]{z}$ is linearly independent and thus by exercise B.4 \cite[620]{lee:smooth_manifolds:2013} contained in a basis for $\Cbb^n$, which can be made into an orthonormal basis using the Gram-Schmidt algorithm, say $(\widetilde{e}_\nu)$, where $\widetilde{e}_1 = z$. Define a linear mapping $\widetilde{A} : \Cbb^n \to \Cbb^n$ by matrix multiplication with $\widetilde{A} := (\widetilde{e}_1,\dots,\widetilde{e}_n)$. Clearly $\widetilde{A} e_\nu = \widetilde{e_\nu}$ and $\widetilde{A} \in \Urm(n)$. Thus $\widetilde{A}^{-1} \in \Urm(n)$ and $\widetilde{A}^{-1}z = e_1 \in \Cbb \times \cbr[0]{0}^{n-1}$. Now set $A := \widetilde{A}^{-1}$. If $\abs[0]{z} \neq 1$, we have that 
+\begin{equation}
+Az = A\del[3]{\abs[0]{z}\frac{z}{\abs[0]{z}}} = \abs[0]{z}A\del[3]{\frac{z}{\abs[0]{z}}} = \abs[0]{z}e_1 \in \Cbb \times \cbr[0]{0}^{n-1}.
+\end{equation}
+\end{proof}
+
+\begin{exercise}
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item The form
+\begin{equation}
+\frac{i}{2}\partial \overline{\partial}\log\del[0]{\abs[0]{z}^2 + 1}
+\end{equation}
+\noindent on $\Cbb^n$ is a K\"ahler form.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+For (a), define a smooth function $\rho: \Cbb^n \to \Rbb$ by 
+\begin{equation*}
+\rho(z) := \log\del[0]{\abs[0]{z}^2 + 1}.
+\end{equation*}
+Then we have 
+\begin{equation}
+\frac{\partial^2 \rho}{\partial z_\mu \partial\overline{z}_\nu} = \frac{\partial}{\partial z_\mu} \frac{z_\nu}{\abs[0]{z}^2 + 1} = \frac{\delta_{\nu\mu}}{\abs[0]{z}^2 + 1} - \frac{z_\nu \overline{z}_\mu}{(\abs[0]{z}^2 + 1)^2}.
+\label{eq:derivative}
+\end{equation}
+Let $A \in \Urm(n)$. Then 
+\begin{equation*}
+A^*\omega_{\FSrm} = \frac{i}{2}A^*\partial\overline{\partial}\rho = \frac{i}{2}\partial\overline{\partial}A^*\rho = \frac{i}{2}A\partial\overline{\partial}(\rho \circ A) = \frac{i}{2}\partial\overline{\partial}\rho = \omega_{\FSrm}
+\end{equation*}
+\noindent since
+\begin{equation*}
+\abs[0]{Az}^2 = \langle Az,Az \rangle = z^tA^t\overline{A}\overline{z} = z^t\overline{z} = \langle z,z \rangle = \abs[0]{z}^2
+\end{equation*}
+\noindent for any $z \in \Cbb^n$. Let $p := (a,0,\dots,0) \in \Cbb \times \cbr[0]{0}^{n-1}$. From \ref{eq:derivative} we deduce that
+\begin{align*}
+\frac{\partial^2 \rho}{\partial z_\mu \partial\overline{z}_\nu}(p) = \begin{cases}
+\frac{1}{(\abs[0]{a}^2 + 1)^2} & \nu = \mu = 1\\
+\frac{1}{\abs[0]{a}^2 + 1} & \nu = \mu > 1\\
+0 & \nu \neq \mu
+\end{cases}
+\end{align*}
+Therefore the matrix $\del[1]{\frac{\partial^2 \rho}{\partial z_\mu \partial\overline{z}_\nu}(p)}$ does have the eigenvalues $\frac{1}{(\abs[0]{a}^2 + 1)^2}$ and $\frac{1}{\abs[0]{a}^2 + 1}$ which are both positive. Thus $\del[1]{\frac{\partial^2 \rho}{\partial z_\mu \partial\overline{z}_\nu}(p)}$ is positive definite.\\
+For (b), we have that $\varphi \circ \varphi = \id_U$ and $\varphi$ is holomorphic. Furthermore
+\begin{align*}
+\varphi^*\log\del[0]{\abs[0]{z}^2 + 1} &= \log\del[0]{\abs[0]{\varphi(z)}^2 + 1}\\
+&= \log\del[3]{\frac{1}{\abs[0]{z_1}^2}\del[3]{1 + \sum_{\nu = 2}^n\abs[0]{z_\nu}^2} + 1}\\
+&= \log\del[3]{\frac{1}{\abs[0]{z_1}^2}\del[0]{\abs[0]{z}^2 + 1}}\\
+&= \log\del[0]{\abs[0]{z}^2 + 1} + \log\del[3]{\frac{1}{\abs[0]{z_1}^2}}.
+\end{align*}
+For (c), we have that 
+\begin{align*}
+\partial\overline{\partial}\varphi^*\log\del[0]{\abs[0]{z}^2 + 1} &= \partial\overline{\partial}\log\del[0]{\abs[0]{z}^2 + 1} + \partial\overline{\partial}\log\del[3]{\frac{1}{\abs[0]{z_1}^2}}\\
+&= \partial\overline{\partial}\log\del[0]{\abs[0]{z}^2 + 1} - \partial\overline{\partial}\log z_1 - \partial\overline{\partial}\log \overline{z}_1\\
+&= \partial\overline{\partial}\log\del[0]{\abs[0]{z}^2 + 1}
+\end{align*}
+\noindent by part (b) and so
+\begin{equation*}
+\varphi^*\omega_{\FSrm} = \frac{i}{2}\varphi^*\partial\overline{\partial}\rho = \frac{i}{2}\partial\overline{\partial}\varphi^*\rho = \frac{i}{2}\partial\overline{\partial}\rho = \omega_{\FSrm}.
+\end{equation*}
+For (f), we have that
+\begin{align*}
+\int_{\CPbb^1} \omega_{\FSrm} &= \int_{\Rbb^2}\frac{\d x \wedge \d y}{(x^2 + y^2 + 1)^2}\\
+&= \int_{\Rbb^2}\frac{\d x\d y}{(x^2 + y^2 + 1)^2}\\
+&= \int_0^\infty\int_0^{2\pi}\frac{r}{\del[0]{r^2 + 1}^2}\d\theta\d r\\
+&= 2\pi \int_0^\infty\frac{r}{\del[0]{r^2 + 1}^2}\d r\\
+&= \pi \int_1^\infty \frac{\d s}{s^2}\\
+&= \pi.
+\end{align*}
+\end{solution}

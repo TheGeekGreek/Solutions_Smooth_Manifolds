@@ -1,0 +1,52 @@
+\chapter{Complex Manifolds}
+\section{Complex Projective Space}
+
+This is problem 2-11 \cite{lee:topological_manifolds:2011}.
+
+\begin{exercise}
+Let $f : X \to Y$ be a continuous map between topological spaces, and let $\Bcal$ be a basis for $X$. Then $f(\Bcal) := \cbr[0]{f(B) : B \in \Bcal}$ is a basis for $Y$ if and only if $f$ is open and surjective. Deduce that if $X$ is second countable and $f$ open and surjective, then $Y$ is second countable. 
+\label{ex:2-11}
+\end{exercise}
+
+\begin{solution}
+Assume first that $f(\Bcal)$ is a basis for $Y$. Let $U \subseteq X$ be open. Since $\Bcal$ is a basis for $X$, we have that $U = \cup_{\iota \in I} B_\iota$. Thus by exercise A4. (h) \cite[388]{lee:topological_manifolds:2011}, we have that $f(U) = \cup_{\iota \in I}f(B_\iota)$, which is open since $f(B_\iota)$ is open for each $\iota \in I$. Assume that $f$ is not surjective. Hence we find $y \in Y \setminus f(X)$. Let $U$ be a neighbourhood of $y$. By exercise 240 \cite[33]{lee:topological_manifolds:2011}, there exists $f(B) \in f(\Bcal)$ such that $y \in f(B) \subseteq U$. But by exercise A.4 (g) \cite[388]{lee:topological_manifolds:2011}, this implies that $y \in f(X)$. contradiction.\\
+Conversly, suppose that $f$ is open and surjective. Thus $f(B)$ is open for any $B \in B$. Let $U \subseteq Y$ be open. Since $f$ is continuous, $f^{-1}(U)$ is open in $X$ and thus $U = \cup_{\iota \in U} B_\iota$. Therefore $f\del[1]{f^{-1}(U)} = \cup_{\iota \in I}f(B_\iota)$ and by the surjectivity of $f$ we get $f\del[1]{f^{-1}(U)} = U$ by exercise A.7 \cite[388]{lee:topological_manifolds:2011}.\\
+If $X$ is second countable, there exists a countable basis $\Bcal$ for $X$. Since $f$ is open and surjective, $f(\Bcal)$ is a countable basis for $Y$.
+\end{solution}
+
+\begin{definition}
+Let $n \in \Zbb$, $n \geq 0$. On $\Cbb^{n + 1}\setminus \cbr[0]{0}$ define an equivalence relation $\sim$ by 
+\begin{equation}
+z \sim w \quad : \Leftrightarrow \quad \exists \lambda \in \Cbb^\times (z = \lambda w).
+\end{equation}
+The quotient space of $\Cbb^{n + 1}\setminus \cbr[0]{0}$ under $\sim$ is called the \bld{complex projective space} and is denoted by $\CPbb^n$.
+\end{definition}
+
+\begin{exercise}
+~
+\begin{enumerate}[label = \textup{(}\alph*\textup{)}]
+\item $\CPbb^n$ is an $n$-dimensional complex manifold.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+To prove (a), we show first that $\CPbb^n$ is Hausdorff and second countable. To this end, we observe that $\CPbb^n$ is precisely the orbit space of the action of $\Cbb^\times$ on $\Cbb^{n + 1}\setminus \cbr[0]{0}$ by scalar multiplication, which we will denote by $\theta$. Assume that $(\lambda_n,z_n) \to (\lambda,z)$ in $\Cbb^\times \times (\Cbb^{n + 1}\setminus \cbr[0]{0})$. By \cite[260]{engelking:general_topology:1989}, this is equivalent to $\lambda_n \to \lambda$ and $z_n \to z$. Therefore, we have that 
+\begin{equation*}
+\theta(\lambda_n,z_n) = \lambda_nz_n \to \lambda z = \theta(\lambda,z).
+\end{equation*}
+Thus $\theta$ is a continuous action and by \cite[541]{lee:smooth_manifolds:2013} we have that the canonical projection $\pi : \Cbb^{n + 1}\setminus \cbr[0]{0} \to \CPbb^n$ is an open map. Hence by exercise \ref{ex:2-11} $\CPbb^n$ is second countable.\\
+Let $z_n \to z$ in $\Cbb^{n + 1}\setminus \cbr[0]{0}$ and $(\lambda_n)_{n \in \Nbb}$ a sequence in $\Cbb^\times$ such that $\theta(\lambda_n,z_n)$ converges. Since $z_n \to z$ in $\Cbb^{n + 1}\setminus \cbr[0]{0}$, we find a component $z^i$ of $z$ which is nonzero. Now take a subsequence $z^i_{n_k}$ of $z^i_n$, such that $z^i_{n_k} \neq 0$. Then $1/z^i_{n_k} \to 1/z^i$ and since $\theta(\lambda_n,z_n)$ converges, also $\lambda_{n_k}z^i_{n_k}$ converges. But then $\lambda_{n_k} = \lambda_{n_k}z^i_{n_k}(1/z^i_{n_k})$ converges and thus by the characterizations of proper actions \cite[543]{lee:smooth_manifolds:2013}, $\theta$ is a proper action. Thus by \cite[543]{lee:smooth_manifolds:2013}, the orbit space $\CPbb^n$ is Hausdorff.\\
+For $\nu = 1,\dots,n+1$ define
+\begin{equation*}
+U_\nu := \cbr[0]{\pi(z) : z_\nu \neq 0}
+\end{equation*}
+\noindent and $\varphi_\nu : U_\nu \to \Cbb^n$
+\begin{equation*}
+\varphi_\nu(\eqclass{z_1,\dots,z_{n + 1}}) := \frac{1}{z_\nu}(z_1,\dots,z_{\nu - 1},z_{\nu + 1},\dots,z_{n + 1}).
+\end{equation*}
+Since $\pi$ is an open map, each $U_\nu$ is open and $\varphi_\nu$ is easily checked to be well defined. The inverse $\varphi_\nu^{-1} : \Cbb^n \to U_\nu$ is given by
+\begin{equation*}
+\varphi_\nu^{-1}(z_1,\dots,z_n) = \eqclass{z_1,\dots,z_{\nu - 1},1,z_\nu,\dots,z_n}.
+\end{equation*}
+
+\end{solution}
